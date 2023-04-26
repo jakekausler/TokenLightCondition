@@ -57,7 +57,9 @@ Hooks.on('refreshToken', (token) => {
   if (moduleState) {
     if (game.user.isGM) {
       if (Core.checkModuleState()) {
-        Core.isValidActor(token);
+        if (Core.isValidActor(token)) {
+          Lighting.check_token_lighting(token);
+        }
       }
     }
   }
